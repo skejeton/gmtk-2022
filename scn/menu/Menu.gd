@@ -9,7 +9,10 @@ var dinit
 func act(i: int):
 	match i:
 		1:
-			$Trans.begin(preload("res://lvl/001/001.tscn"))
+			Glob.origin = ""
+			$Trans.begin(load("res://lvl/001/001.tscn"))
+		2:
+			get_tree().change_scene("res://scn/level_select/LevelSelect.tscn")
 		3:
 			get_tree().change_scene("res://scn/credits/Credits.tscn")
 			
@@ -18,8 +21,11 @@ func act(i: int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Glob.set_music("res://res/dile.ogg")
+	
 	dinit = $Dice.position
 	$PlayBtn.connect("pressed", self, "act", [1])
+	$SelBtn.connect("pressed", self, "act", [2])
 	$CreditsBtn.connect("pressed", self, "act", [3])
 	
 	pass # Replace with function body.

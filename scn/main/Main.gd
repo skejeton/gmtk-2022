@@ -3,6 +3,7 @@ extends Node2D
 const DieScn = preload("res://obj/die2d/Die2d.tscn")
 export var next: PackedScene
 export var lv_name: String = ""
+var latency = 0
 
 class ActionMove:
 	var byX: int
@@ -55,7 +56,10 @@ func init_from_tilemap():
 		$VisualData/Tilemap.set_cellv(p, cellv)
 
 
+
 func _ready():
+	$VisualData/CanvasLayer2/TextureButton.connect("pressed", self, "undobtn")
+	Glob.set_music("res://res/dice_roller_mastered.mp3")
 	$VisualData/CanvasLayer2/Trans.reverse()
 	init_from_tilemap()
 	$VisualData.show()
@@ -80,6 +84,7 @@ func undo_actions(actions):
 			action.die.rotate(-action.by)
 
 func cb_wrongblock_timeout(action):
+	$SfxWrong.play()
 	input_lock = false
 	undo_actions([action])
 
@@ -96,19 +101,26 @@ func pop_actions():
 	
 	undo_actions(backlog.pop_back())
 
+
+
 func push_move(die, x: int, y: int):
 	if input_lock:
 		return
+	input_lock = true
+	yield(get_tree().create_timer(latency), "timeout")
+	input_lock = false
 	var cell = $InputData.get_cellv(die.grid_pos + Vector2(x, y))
 	
 	var motion
 	var value = get_die_value_from_cell(cell)
 	
 	if cell != -1:
+		$SfxRoll.play()
 		die.move_x(x)
 		die.move_y(y)
 
 		var top = die.get_top()
+		
 		
 		if value != -1 && top != value:
 			input_lock = true
@@ -121,22 +133,42 @@ func push_move(die, x: int, y: int):
 		actions.push_back(ActionMove.new(die, x, y))
 		
 		if cell == CellValues.CELL_END:
-			$VisualData/CanvasLayer2/Trans.begin(next)
-			yield(get_tree().create_timer(2), "timeout")
+			$SfxWin.play()
+			input_lock = true
+			merge_actions()
+			yield(get_tree().create_timer(1), "timeout")
+			
+			if Glob.origin == "level_select":
+				Glob.origin = ""
+				Glob.fix0 = true
+				$VisualData/CanvasLayer2/Trans.begin(load("res://scn/level_select/LevelSelect.tscn"))
+			else:
+				$VisualData/CanvasLayer2/Trans.begin(next)
 			
 		if cell == CellValues.CELL_RCW:
+			$SfxRotate.play()
 			actions.push_back(ActionRotate.new(die, -1))
+	else:
+		$SfxCant.play()
 
 func _input(ev):
 	if !input_lock:
 		if ev is InputEventKey:
 			if ev.pressed && (ev.scancode == KEY_ESCAPE || ev.scancode == KEY_BACKSPACE):
 				pop_actions()
-			 
 
+func undobtn():
+	if !input_lock:
+		pop_actions()
 
 func _process(delta):
+	if len(backlog) > 0 && !input_lock:
+		$VisualData/CanvasLayer2/TextureButton.show()
+	else:
+		$VisualData/CanvasLayer2/TextureButton.hide()
+		
 	Glob.h += delta/40.0
+	
 	$VisualData/CanvasLayer/Node2D.modulate = Color.from_hsv(Glob.h, 0.2, 0.2)
 	if !input_lock:
 		for die in $VisualData/Dice.get_children():

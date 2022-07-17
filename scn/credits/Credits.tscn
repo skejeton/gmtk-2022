@@ -16,10 +16,10 @@ script = ExtResource( 4 )
 modulate = Color( 0.301961, 0.219608, 0.219608, 1 )
 
 [node name="TextureButton" parent="." instance=ExtResource( 1 )]
-margin_left = 72.0
-margin_top = 448.0
-margin_right = 616.0
-margin_bottom = 504.0
+margin_left = 64.0
+margin_top = 488.0
+margin_right = 608.0
+margin_bottom = 544.0
 
 [node name="Label" parent="TextureButton" index="0"]
 text = "Back"

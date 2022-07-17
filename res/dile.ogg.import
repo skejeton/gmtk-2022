@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dile.ogg-2c6ff4c956f35904133174b3c1dc944a.oggstr"
+
+[deps]
+
+source_file="res://res/dile.ogg"
+dest_files=[ "res://.import/dile.ogg-2c6ff4c956f35904133174b3c1dc944a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

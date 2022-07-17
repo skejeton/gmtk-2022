@@ -51,7 +51,7 @@ func _process(delta):
 	if began && p < 3.2:
 		t += delta
 		p += sig * delta * t * t * 1.3
-	$ColorRect.rect_size.x = (p/3.0+0.2) * get_viewport_rect().size.x
+	$ColorRect.rect_size.x = (p/3.0+0.4) * get_viewport_rect().size.x
 	$ColorRect.rect_size.y = get_viewport_rect().size.y
 		
 	$ViewportContainer/Viewport/Spatial/cube.transform.origin.x = p

@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scn/main/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://lvl/lvl_end/LvlEnd.gd" type="Script" id=2]
+[ext_resource path="res://res/Orbitron-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://lvl/lvl_end/Label.gd" type="Script" id=4]
+[ext_resource path="res://scn/level_select/LevelSelect.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Main" parent="." instance=ExtResource( 1 )]
+next = ExtResource( 5 )
+lv_name = "The End"
+
+[node name="InputData" parent="Main" index="0"]
+tile_data = PoolIntArray( -1048544, 0, 0, -1048543, 1, 0, -1048542, 1, 0, -983006, 1, 0, -917472, 1, 0, -917471, 12, 0, -917470, 4, 0, -851936, 1, 0, -851935, 1, 0, -786400, 1, 0, -720864, 1, 0, -655328, 1, 0, -589792, 1, 0, -524256, 1, 0, -458720, 1, 0, -393184, 1, 0, -327648, 1, 0, -262112, 1, 0, -196576, 1, 0, -131040, 1, 0, -65504, 1, 0, 32, 1, 0, 65568, 1, 0, 131104, 1, 0, 196640, 1, 0, 262176, 1, 0, 327712, 1, 0, 393248, 1, 0, 458784, 1, 0, 524320, 1, 0, 589856, 1, 0, 655392, 1, 0, 720928, 1, 0, 786464, 1, 0, 852000, 1, 0, 917536, 1, 0, 983072, 1, 0, 1048608, 1, 0, 1114144, 1, 0, 1179680, 1, 0, 1245216, 1, 0, 1310752, 1, 0, 1376288, 1, 0, 1441824, 1, 0, 1507360, 1, 0, 1572896, 1, 0, 1638432, 1, 0, 1703968, 1, 0, 1769504, 2, 0 )
+
+[node name="Skejeton" type="Label" parent="."]
+margin_left = 1814.0
+margin_top = 1430.0
+margin_right = 1972.0
+margin_bottom = 1485.0
+rect_scale = Vector2( 1, 1.00228 )
+custom_fonts/font = SubResource( 1 )
+text = "Programming & Art..
+            skejeton"
+script = ExtResource( 4 )
+
+[node name="Tami" type="Label" parent="."]
+margin_left = 2200.0
+margin_top = 1034.0
+margin_right = 2358.0
+margin_bottom = 1089.0
+rect_scale = Vector2( 1, 1.00228 )
+custom_fonts/font = SubResource( 1 )
+text = "Soundtrack & SFX..
+            chiptami"
+script = ExtResource( 4 )
+
+[node name="Player" type="Label" parent="."]
+margin_left = 2225.0
+margin_top = 138.0
+margin_right = 2503.0
+margin_bottom = 193.0
+rect_scale = Vector2( 1, 1.00228 )
+custom_fonts/font = SubResource( 1 )
+text = "Playing.."
+script = ExtResource( 4 )
+
+[node name="Player2" type="Label" parent="."]
+margin_left = 1861.0
+margin_top = -542.0
+margin_right = 1950.0
+margin_bottom = -487.0
+rect_scale = Vector2( 1, 1.00228 )
+custom_fonts/font = SubResource( 1 )
+text = "YOU!"
+script = ExtResource( 4 )
+
+[node name="Rusheel" type="Label" parent="."]
+margin_left = 1762.0
+margin_top = 724.0
+margin_right = 2040.0
+margin_bottom = 779.0
+rect_scale = Vector2( 1, 1.00228 )
+custom_fonts/font = SubResource( 1 )
+text = "Testing & Additional help..
+                  Rusheel"
+script = ExtResource( 4 )
+
+[editable path="Main"]
+[editable path="Main/VisualData/CanvasLayer2/TextureButton"]

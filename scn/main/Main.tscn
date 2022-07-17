@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://obj/bg/Bg.tscn" type="PackedScene" id=1]
 [ext_resource path="res://res/ed_tiles.png" type="Texture" id=2]
 [ext_resource path="res://scn/main/Main.gd" type="Script" id=3]
 [ext_resource path="res://res/gm_tiles.png" type="Texture" id=4]
 [ext_resource path="res://obj/trans/Trans.tscn" type="PackedScene" id=5]
+[ext_resource path="res://res/wrong_tile.ogg" type="AudioStream" id=6]
+[ext_resource path="res://res/woodblock.ogg" type="AudioStream" id=7]
+[ext_resource path="res://res/dice_rolling_to_side.ogg" type="AudioStream" id=8]
+[ext_resource path="res://res/dice_rotating.ogg" type="AudioStream" id=9]
+[ext_resource path="res://res/sliding_into_exit_but_reverse.ogg" type="AudioStream" id=10]
+[ext_resource path="res://obj/menubtn/MenuBtn.tscn" type="PackedScene" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ed_tiles.png 0"
@@ -388,4 +394,30 @@ format = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="VisualData"]
 
+[node name="TextureButton" parent="VisualData/CanvasLayer2" instance=ExtResource( 11 )]
+margin_left = 32.0
+margin_top = 500.0
+margin_right = 208.0
+margin_bottom = 552.0
+
+[node name="Label" parent="VisualData/CanvasLayer2/TextureButton" index="0"]
+text = "UNDO"
+
 [node name="Trans" parent="VisualData/CanvasLayer2" instance=ExtResource( 5 )]
+
+[node name="SfxWrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="SfxRoll" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="SfxCant" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="SfxRotate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="SfxWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[editable path="VisualData/CanvasLayer2/TextureButton"]

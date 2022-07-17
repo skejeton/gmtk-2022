@@ -21,6 +21,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	for cube in cubes:
+		cube.rotate_x(delta/6)
+		cube.rotate_y(delta/6)
+	
 	$ViewportContainer/Viewport.size = get_viewport_rect().size
 	$ViewportContainer.rect_size = get_viewport_rect().size
 	

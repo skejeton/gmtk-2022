@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dice_rolling_to_side.ogg-5b9a5c1c1337619e35fd35843d4fd0b8.oggstr"
+
+[deps]
+
+source_file="res://res/dice_rolling_to_side.ogg"
+dest_files=[ "res://.import/dice_rolling_to_side.ogg-5b9a5c1c1337619e35fd35843d4fd0b8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

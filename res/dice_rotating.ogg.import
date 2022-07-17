@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dice_rotating.ogg-2b4de7f70a22d07facc4f0f892fe7e34.oggstr"
+
+[deps]
+
+source_file="res://res/dice_rotating.ogg"
+dest_files=[ "res://.import/dice_rotating.ogg-2b4de7f70a22d07facc4f0f892fe7e34.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Glob="*res://Glob.gd"
+BackgroundMusic="*res://BackgroundMusic.tscn"
 
 [display]
 

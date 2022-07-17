@@ -1,13 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scn/main/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://lvl/lvl_end/LvlEnd.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Main" parent="." instance=ExtResource( 1 )]
+next = ExtResource( 2 )
 lv_name = "Turn patterns"
 
 [node name="InputData" parent="Main" index="0"]
 tile_data = PoolIntArray( 393236, 0, 0, 393237, 9, 0, 458773, 10, 0, 524308, 1, 0, 524309, 1, 0, 589843, 10, 0, 589844, 1, 0, 589845, 1, 0, 655379, 2, 0, 655380, 1, 0, 655381, 1, 0 )
 
+[node name="SfxWrong" parent="Main" index="2"]
+volume_db = -2.621
+pitch_scale = 1.72
+
 [editable path="Main"]
+[editable path="Main/VisualData/CanvasLayer2/TextureButton"]

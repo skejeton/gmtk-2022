@@ -86,10 +86,12 @@ class LogicalDice:
 
 var dice = LogicalDice.new()
 var v_tran = Transform.IDENTITY
+var x_tran = Transform.IDENTITY
 var tran = Transform.IDENTITY
 onready var pos = position
 var grid_pos = Vector2(0, 0)
 var rotated = false
+var delay = 0.0
 
 func get_top() -> int:
 	return self.dice.get_top()
@@ -108,6 +110,7 @@ func move_y(by):
 	tran = tran.rotated(Vector3(1, 0, 0), by*PI/2)
 	set_pos_smooth(grid_pos+Vector2(0, by))
 	dice.rotate_pitch(-by)
+	x_tran = tran
 
 func move_x(by):
 	if by == 0:
@@ -115,14 +118,18 @@ func move_x(by):
 	tran = tran.rotated(Vector3(0, 0, 1), by*-PI/2)
 	set_pos_smooth(grid_pos+Vector2(by, 0))
 	dice.rotate_roll(-by)
+	x_tran = tran
+	
 
 func rotate(times):
 	dice.rotate_yaw(times)
-	yield(get_tree().create_timer(0.2), "timeout")
-	tran = tran.rotated(Vector3(0, 1, 0), times*PI/2)	
+	tran = tran.rotated(Vector3(0, 1, 0), times*PI/2)
+	delay = 0.5
+	yield(get_tree().create_timer(0.3), "timeout")
+	x_tran = tran
 
 func _process(delta):
-	v_tran = v_tran.interpolate_with(tran, delta * 10)
+	v_tran = v_tran.interpolate_with(x_tran, delta * 10)
 	position = position.linear_interpolate(pos, delta * 10)
 	
 	update()
