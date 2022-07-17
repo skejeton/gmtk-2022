@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scn/main/Main.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Main" parent="." instance=ExtResource( 1 )]
+lv_name = "Turn patterns"
+
+[node name="InputData" parent="Main" index="0"]
+tile_data = PoolIntArray( 393236, 0, 0, 393237, 9, 0, 458773, 10, 0, 524308, 1, 0, 524309, 1, 0, 589843, 10, 0, 589844, 1, 0, 589845, 1, 0, 655379, 2, 0, 655380, 1, 0, 655381, 1, 0 )
+
+[editable path="Main"]

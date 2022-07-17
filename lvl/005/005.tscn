@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scn/main/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://lvl/006/006.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Main" parent="." instance=ExtResource( 1 )]
+next = ExtResource( 2 )
+lv_name = "Wrong parity, bad polarity!"
+
+[node name="InputData" parent="Main" index="0"]
+tile_data = PoolIntArray( -1834996, 0, 0, -1769461, 4, 0, -1769460, 8, 0, -1703925, 3, 0, -1703924, 8, 0, -1638388, 1, 0, -1572852, 1, 0, -1507316, 1, 0, -1441780, 1, 0, -1376244, 1, 0, -1376243, 9, 0, -1310709, 1, 0, -1310708, 2, 0, -1310707, 1, 0, -1245173, 1, 0, -1245172, 6, 0, -1179636, 0, 0 )
+
+[editable path="Main"]

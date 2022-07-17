@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scn/main/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://lvl/004/004.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Main" parent="." instance=ExtResource( 1 )]
+next = ExtResource( 2 )
+lv_name = "The opposite is true"
+
+[node name="InputData" parent="Main" index="0"]
+tile_data = PoolIntArray( 458770, 0, 0, 524304, 2, 0, 524305, 1, 0, 524306, 6, 0, 524307, 1, 0, 589840, 1, 0, 589843, 1, 0, 655376, 1, 0, 655377, 1, 0, 655379, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0 )
+
+[editable path="Main"]

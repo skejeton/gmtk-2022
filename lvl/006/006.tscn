@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scn/main/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://lvl/007/007.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Main" parent="." instance=ExtResource( 1 )]
+next = ExtResource( 2 )
+lv_name = "All your base are belong to us."
+
+[node name="InputData" parent="Main" index="0"]
+tile_data = PoolIntArray( 393229, 1, 0, 393230, 1, 0, 393231, 3, 0, 458764, 1, 0, 458765, 1, 0, 458767, 0, 0, 524299, 5, 0, 524300, 2, 0, 524301, 1, 0, 589835, 1073741825, 0, 589837, 1, 0, 589838, 1, 0, 655371, 1073741825, 0, 655372, 1073741825, 0, 655374, 1, 0, 720908, 1073741825, 0, 720909, 1073741825, 0, 720910, 7, 0 )
+
+[editable path="Main"]

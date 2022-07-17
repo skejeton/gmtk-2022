@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://obj/trans/Trans.gd" type="Script" id=1]
+[ext_resource path="res://res/cube.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://res/die2.png" type="Texture" id=3]
+
+[sub_resource type="Environment" id=2]
+ambient_light_color = Color( 0.301961, 0.329412, 0.388235, 1 )
+
+[sub_resource type="World" id=3]
+environment = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 3 )
+
+[node name="Trans" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 10, 10 )
+world = SubResource( 3 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Spatial" type="Spatial" parent="ViewportContainer/Viewport"]
+
+[node name="cube" type="MeshInstance" parent="ViewportContainer/Viewport/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="ViewportContainer/Viewport/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.64383 )
+projection = 1
+current = true
+size = 2.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="ViewportContainer/Viewport/Spatial"]
+transform = Transform( 0.204974, 0, 0.978767, 0, 1, 0, -0.978767, 0, 0.204974, 3.2535, 3.66722, 1.1589 )
+light_energy = 0.727
