@@ -9,11 +9,13 @@ var moves = 0
 var wait = 1.0
 
 
+func _ready():
+	$Main.input_lock = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	Glob.finished = true
 	Glob.fix0 = true
-	$Main.input_lock = true
 
 	Glob.set_music2("!res://res/dice_roller_mastered.mp3", 1.0, 0.7)
 	wait -= delta
@@ -30,6 +32,7 @@ func _process(delta):
 		$Player.show()
 
 	if moves == 30:
+		moves += 1
 		$Main.backlog = []
 		$Main.input_lock = false
 

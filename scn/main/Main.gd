@@ -106,9 +106,7 @@ func pop_actions():
 func push_move(die, x: int, y: int):
 	if input_lock:
 		return
-	input_lock = true
-	yield(get_tree().create_timer(latency), "timeout")
-	input_lock = false
+		
 	var cell = $InputData.get_cellv(die.grid_pos + Vector2(x, y))
 	
 	var motion
