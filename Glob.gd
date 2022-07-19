@@ -12,6 +12,24 @@ var ls_scroll = 0
 var fix0 = false
 var mus = ""
 var finished = false
+var t = 0
+var best = 1e9
+var timerstart = false
+
+func starttime():
+	t = 0
+	timerstart = true
+	
+func stoptime():
+	if t < best:
+		best = t
+	timerstart = false
+	
+func getstrbesttime():
+	return "%d:%02d" % [int(floor(best/60)), int(floor(best))%60]
+
+func getstrtime():
+	return "%d:%02d" % [int(floor(t/60)), int(floor(t))%60]
 
 func set_music2(path, p, v):
 	if path != mus:
@@ -33,4 +51,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if timerstart:
+		t += delta
 	pass

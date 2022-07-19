@@ -22,6 +22,7 @@ margin_left = 184.0
 margin_top = 24.0
 margin_right = 696.0
 margin_bottom = 213.0
+rect_pivot_offset = Vector2( 262, 93 )
 custom_fonts/font = SubResource( 1 )
 text = "DILES"
 
@@ -57,7 +58,7 @@ margin_left = 928.0
 margin_top = 536.0
 margin_right = 968.0
 margin_bottom = 550.0
-text = "v6"
+text = "v7"
 
 [node name="Dice" parent="." instance=ExtResource( 6 )]
 position = Vector2( 242, 89 )

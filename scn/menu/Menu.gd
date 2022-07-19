@@ -9,6 +9,7 @@ var dinit
 func act(i: int):
 	match i:
 		1:
+			Glob.starttime()
 			Glob.origin = ""
 			$Trans.begin(load("res://lvl/001/001.tscn"))
 		2:
@@ -21,6 +22,9 @@ func act(i: int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Glob.finished:
+		$PlayBtn/Label.text += " BEST "+Glob.getstrbesttime()
+		
 	Glob.set_music("res://res/dile.ogg")
 	
 	dinit = $Dice.position

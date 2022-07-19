@@ -58,6 +58,9 @@ func init_from_tilemap():
 
 
 func _ready():
+	if !Glob.timerstart:
+		$VisualData/CanvasLayer2/TimeMarker.hide()
+	 
 	$VisualData/CanvasLayer2/TextureButton.connect("pressed", self, "undobtn")
 	Glob.set_music("res://res/dice_roller_mastered.mp3")
 	$VisualData/CanvasLayer2/Trans.reverse()
@@ -150,6 +153,15 @@ func push_move(die, x: int, y: int):
 		$SfxCant.play()
 
 func _input(ev):
+	if ev is InputEventKey:
+		if ev.pressed && ev.scancode == KEY_F1:
+			input_lock = true
+			Glob.origin = ""
+			Glob.fix0 = true
+			$VisualData/CanvasLayer2/TimeMarker.hide()
+			Glob.t = 1e9
+			$VisualData/CanvasLayer2/Trans.begin(load("res://scn/level_select/LevelSelect.tscn"))
+	
 	if !input_lock:
 		if ev is InputEventKey:
 			if ev.pressed && (ev.scancode == KEY_ESCAPE || ev.scancode == KEY_BACKSPACE):
@@ -160,6 +172,7 @@ func undobtn():
 		pop_actions()
 
 func _process(delta):
+	$VisualData/CanvasLayer2/TimeMarker.text = Glob.getstrtime()
 	if len(backlog) > 0 && !input_lock:
 		$VisualData/CanvasLayer2/TextureButton.show()
 	else:

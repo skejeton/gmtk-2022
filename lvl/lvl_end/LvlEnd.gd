@@ -14,7 +14,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	Glob.finished = true
 	Glob.fix0 = true
 
 	Glob.set_music2("!res://res/dice_roller_mastered.mp3", 1.0, 0.7)
@@ -38,6 +37,8 @@ func _process(delta):
 
 	if $Main/VisualData/Dice.get_child(0).grid_pos == Vector2(32, -8):
 		$Player2.show()
+	if $Main/VisualData/Dice.get_child(0).grid_pos == Vector2(32, -16):
+		Glob.finished = true
 
 
 

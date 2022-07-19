@@ -34,6 +34,8 @@ func back():
 	get_tree().change_scene_to(load("res://scn/menu/Menu.tscn"))
 
 func _ready():
+	Glob.stoptime()
+	
 	if Glob.finished:
 		levels.append(load("res://lvl/test/test.tscn"))
 	Glob.set_music("res://res/dile.ogg")
