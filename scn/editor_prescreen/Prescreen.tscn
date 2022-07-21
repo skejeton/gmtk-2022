@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://obj/bg/Bg.tscn" type="PackedScene" id=1]
+[ext_resource path="res://obj/menubtn/MenuBtn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scn/editor_prescreen/Prescreen.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Node2D" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+
+[node name="LoadBtn" parent="." instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_top = 192.0
+margin_right = 634.0
+margin_bottom = 247.0
+
+[node name="Label" parent="LoadBtn" index="0"]
+text = "LOAD FROM CLIPBOARD"
+
+[node name="EditBtn" parent="." instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_top = 320.0
+margin_right = 480.0
+margin_bottom = 375.0
+
+[node name="Label" parent="EditBtn" index="0"]
+text = "EDIT LEVEL"
+
+[node name="BackBtn" parent="." instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_top = 448.0
+margin_right = 320.0
+margin_bottom = 503.0
+
+[node name="Label" parent="BackBtn" index="0"]
+text = "BACK"
+
+[editable path="LoadBtn"]
+[editable path="EditBtn"]
+[editable path="BackBtn"]

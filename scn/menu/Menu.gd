@@ -16,6 +16,8 @@ func act(i: int):
 			get_tree().change_scene("res://scn/level_select/LevelSelect.tscn")
 		3:
 			get_tree().change_scene("res://scn/credits/Credits.tscn")
+		5:
+			get_tree().change_scene("res://scn/editor_prescreen/Prescreen.tscn")
 			
 		
 
@@ -30,6 +32,7 @@ func _ready():
 	dinit = $Dice.position
 	$PlayBtn.connect("pressed", self, "act", [1])
 	$SelBtn.connect("pressed", self, "act", [2])
+	$CreBtn.connect("pressed", self, "act", [5])
 	$CreditsBtn.connect("pressed", self, "act", [3])
 	
 	pass # Replace with function body.

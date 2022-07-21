@@ -90,15 +90,18 @@ var x_tran = Transform.IDENTITY
 var tran = Transform.IDENTITY
 onready var pos = position
 var grid_pos = Vector2(0, 0)
+var grid_vis_ofs = Vector2(0, 0)
 var rotated = false
 var delay = 0.0
+var index = -1
+
 
 func get_top() -> int:
 	return self.dice.get_top()
 
 func set_pos_smooth(grid_pos):
 	self.grid_pos = grid_pos
-	self.pos = grid_pos * 64
+	self.pos = (grid_pos + grid_vis_ofs) * 64
 	
 func set_pos(grid_pos):
 	set_pos_smooth(grid_pos)
@@ -119,7 +122,15 @@ func move_x(by):
 	set_pos_smooth(grid_pos+Vector2(by, 0))
 	dice.rotate_roll(-by)
 	x_tran = tran
+
+func fake_move(x, y):
+	tran = tran.rotated(Vector3(0, 0, 1), x*-PI/2)
+	tran = tran.rotated(Vector3(1, 0, 0), y*PI/2)
 	
+	grid_vis_ofs += Vector2(x, y)
+	set_pos_smooth(grid_pos)
+	
+	x_tran = tran
 
 func rotate(times):
 	dice.rotate_yaw(times)
@@ -139,5 +150,5 @@ func _process(delta):
 func _draw():
 	pass
 #	var l = Label.new()
-#	draw_string(l.get_font(""), Vector2(0, -40), "%s:%s" % [dice.rollX, dice.rollZ])
+#	draw_string(l.get_font(""), Vector2(0, -40), "%s" % [index])
 #	draw_string(l.get_font(""), Vector2(0, -20), "Top is %d:%d" % [dice.get_top()%6+1, dice.get_top()/6])

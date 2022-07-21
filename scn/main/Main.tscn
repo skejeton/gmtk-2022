@@ -395,7 +395,7 @@ material = SubResource( 3 )
 tile_set = SubResource( 2 )
 format = 1
 
-[node name="Dice" type="Node2D" parent="VisualData"]
+[node name="Dice" type="YSort" parent="VisualData"]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="VisualData"]
 
